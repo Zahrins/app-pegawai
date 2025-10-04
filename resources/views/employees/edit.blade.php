@@ -8,7 +8,7 @@
 </head>
 <body class="min-h-screen flex items-center justify-center bg-gradient-to-b from-[#B6CEB4] to-[#D9E9CF]">
     <div class="w-1/2 justify-center bg-[#F0F0F0] rounded-3xl p-10 shadow-2xl border border-slate-300">
-        <h2 class="text-2xl font-bold text-center mb-6">Edit Data Pegawai</h2>
+        <h2 class="text-2xl font-bold text-center mb-2">Edit Data Pegawai</h2>
         <form action="{{ route('employees.update', $employee->id) }}" method="POST">
             @csrf
             @method('PUT')

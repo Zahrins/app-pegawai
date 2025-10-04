@@ -6,7 +6,7 @@
     <title>Detail Pegawai</title>
     @vite('resources/css/app.css')
 </head>
-<body class="min-h-screen flex items-center justify-center bg-gradient-to-b from-[#B6CEB4] to-[#D9E9CF]">
+<body class="min-h-screen flex items-center justify-center bg-gradient-to-b from-[#B6CEB4] to-[#F0F0F0]">
     <div class="w-[40%] h-[50%] bg-[#F0F0F0] rounded-3xl p-10 shadow-2xl border border-slate-300">
         <h1 class="text-2xl font-bold text-center mb-6">Detail Pegawai</h1>
         <table border="1" cellpadding="8" cellspacing="0">
