@@ -15,11 +15,11 @@
     </h1>
 
     <form action="{{ route('employees.store') }}" method="POST" 
-          class="grid grid-cols-2 gap-10 divide-x divide-slate-300">
+          class="grid grid-cols-2 gap-10 divide-x-reverse divide-slate-300">
       @csrf
 
       <!-- KIRI: Informasi Pribadi -->
-      <div class="space-y-4 pr-10 space-x-8">
+      <div class="space-y-4 pr-10">
         <h2 class="text-lg font-semibold text-slate-700 border-b pb-2 mb-3">
           Informasi Pribadi
         </h2>

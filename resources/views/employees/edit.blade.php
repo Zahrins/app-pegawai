@@ -8,41 +8,41 @@
 </head>
 <body class="min-h-screen flex items-center justify-center">
     <div class="w-1/2 justify-center bg-[#F0F0F0] rounded-3xl p-10 shadow-2xl border border-slate-300">
-        <h2 class="text-2xl font-bold text-center text-[#1B3C53] mb-2">Edit Data Pegawai</h2>
-        <form action="{{ route('employees.update', $employee->id) }}" method="POST">
+        <h2 class="text-2xl font-bold text-center text-[#1B3C53] mb-8">Edit Data Pegawai</h2>
+        <form action="{{ route('employees.update', $employee->id) }}" method="POST" class="w-full">
             @csrf
             @method('PUT')
-            <table class="flex justify-center mt-15">
+            <table class="flex justify-center mt-15 w-full">
                 <tr>
                     <td class="pr-20">Nama Lengkap</td>
-                    <td><input type="text" class="w-70 mt-1 block rounded-lg border border-slate-300 p-2 focus:ring-1 focus:ring-[#456882] focus:outline-none"
+                    <td><input type="text" class="w-[20rem] mt-1 block rounded-lg border border-slate-300 p-2 focus:ring-1 focus:ring-[#456882] focus:outline-none"
                                  name="nama_lengkap" value="{{ old('nama_lengkap', $employee->nama_lengkap) }}" ></td>
                 </tr>
                 <tr>
                     <td>Email</td>
-                    <td><input type="email"class="mt-1 block w-full rounded-lg border border-slate-300 p-2 focus:ring-1 focus:ring-[#456882] focus:outline-none"
+                    <td><input type="email" class="w-[20rem] mt-1 block rounded-lg border border-slate-300 p-2 focus:ring-1 focus:ring-[#456882] focus:outline-none"
                                  name="email" value="{{ old('email', $employee->email) }}"></td>
                 </tr>
                 <tr>
                     <td>Nomor Telepon</td>
-                    <td><input type="text" class="mt-1 block w-full rounded-lg border border-slate-300 p-2 focus:ring-1 focus:ring-[#456882] focus:outline-none"
+                    <td><input type="text" class="w-[20rem] mt-1 block rounded-lg border border-slate-300 p-2 focus:ring-1 focus:ring-[#456882] focus:outline-none"
                                  name="nomor_telepon" value="{{ old('nomor_telepon', $employee->nomor_telepon) }}"></td>
                 </tr>
                 <tr>
                     <td>Tanggal Lahir</td>
-                    <td><input type="date" class="mt-1 block w-full rounded-lg border border-slate-300 p-2 focus:ring-1 focus:ring-[#456882] focus:outline-none"
+                    <td><input type="date" class="w-[20rem] mt-1 block rounded-lg border border-slate-300 p-2 focus:ring-1 focus:ring-[#456882] focus:outline-none"
                                  name="tanggal_lahir" value="{{ old('tanggal_lahir', $employee->tanggal_lahir) }}"></td>
                 </tr>
                 <tr>
                     <td>Alamat</td>
-                    <td><input type="text" class="mt-1 block w-full rounded-lg border border-slate-300 p-2 focus:ring-1 focus:ring-[#456882] focus:outline-none"
+                    <td><input type="text" class="w-[20rem] mt-1 block rounded-lg border border-slate-300 p-2 focus:ring-1 focus:ring-[#456882] focus:outline-none"
                                  name="alamat" value="{{ old('alamat', $employee->alamat) }}"></td>
                 </tr>
                 
                 <tr>
                     <td>Departemen</td>
                     <td>
-                        <select name="department_id" class="mt-1 block w-full rounded-lg border border-slate-300 p-2 focus:ring-1 focus:ring-[#456882] focus:outline-none">
+                        <select name="department_id" class="w-[20rem] mt-1 block rounded-lg border border-slate-300 p-2 focus:ring-1 focus:ring-[#456882] focus:outline-none">
                             @foreach($departments as $department)
                                 <option value="{{ $department->id }}" 
                                     {{ old('department_id', $employee->department_id) == $department->id ? 'selected' : '' }}>
@@ -56,7 +56,7 @@
                 <tr>
                     <td>Jabatan</td>
                     <td>
-                        <select name="position_id" class="mt-1 block w-full rounded-lg border border-slate-300 p-2 focus:ring-1 focus:ring-[#456882] focus:outline-none">
+                        <select name="position_id" class="w-[20rem] mt-1 block rounded-lg border border-slate-300 p-2 focus:ring-1 focus:ring-[#456882] focus:outline-none">
                             @foreach($positions as $position)
                                 <option value="{{ $position->id }}" 
                                     {{ old('position_id', $employee->position_id) == $position->id ? 'selected' : '' }}>

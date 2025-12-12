@@ -12,11 +12,35 @@ class EmployeeController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $employees = Employee::with(['department', 'position'])->latest()->paginate(15);
+        $statusFilter = $request->input('status');
 
-        return view('employees.index', compact('employees'));
+        // Query dasar
+        $query = Employee::with(['department', 'position'])->latest();
+
+        // Jika ada filter status
+        if ($statusFilter == 'aktif') {
+            $query->where('status', 'aktif');
+        } elseif ($statusFilter == 'nonaktif') {
+            $query->where('status', 'nonaktif');
+        }
+
+        // Pagination hasil filter
+        $employees = $query->paginate(5)->appends($request->query());
+
+        // Statistik (mengikuti filter)
+        $total_aktif = Employee::where('status', 'aktif')->count();
+        $total_nonaktif = Employee::where('status', 'nonaktif')->count();
+        $total_semua = Employee::count();
+
+        return view('employees.index', compact(
+            'employees',
+            'total_aktif',
+            'total_nonaktif',
+            'total_semua',
+            'statusFilter'
+        ));
     }
 
     /**
@@ -70,7 +94,7 @@ class EmployeeController extends Controller
         $employee = Employee::find($id); 
         $departments = Department::all();
         $positions = Position::all();
-        // PERBAIKAN: Mengganti 'employees' menjadi 'employee'
+        
         return view('employees.edit', compact('employee', 'departments', 'positions'));
     }
 

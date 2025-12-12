@@ -10,7 +10,6 @@
     <div class="w-1/2 justify-center bg-[#F0F0F0] rounded-3xl p-10 shadow-2xl border border-slate-300">
         <h2 class="text-2xl font-bold text-center text-[#1B3C53] mb-2">Edit Data Departemen</h2>
         
-        {{-- FIX: Change route from employees.update to departments.update and use $department --}}
         <form action="{{ route('departments.update', $department->id) }}" method="POST">
             @csrf
             @method('PUT')

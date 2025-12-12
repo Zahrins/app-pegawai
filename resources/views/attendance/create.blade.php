@@ -89,7 +89,7 @@
         document.addEventListener('DOMContentLoaded', function() {
             const today = new Date();
 
-            // Fungsi untuk memformat tanggal (YYYY-MM-DD)
+            // memformat tanggal (YYYY-MM-DD)
             const formatDate = (date) => {
                 const year = date.getFullYear();
                 const month = String(date.getMonth() + 1).padStart(2, '0');
@@ -97,7 +97,7 @@
                 return `${year}-${month}-${day}`;
             };
 
-            // Fungsi untuk memformat waktu (HH:MM)
+            // memformat waktu (HH:MM)
             const formatTime = (date) => {
                 const hours = String(date.getHours()).padStart(2, '0');
                 const minutes = String(date.getMinutes()).padStart(2, '0');
@@ -108,8 +108,6 @@
             document.getElementById('tanggal').value = formatDate(today);
             document.getElementById('waktu_masuk').value = formatTime(today);
             
-            // Opsional: Mengisi waktu keluar jika status default adalah 'hadir'
-            // document.getElementById('waktu_keluar').value = formatTime(today);
         });
     </script>
 </body>

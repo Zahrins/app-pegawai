@@ -8,11 +8,34 @@ use Illuminate\Http\Request;
 
 class AttendanceController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $attendance_list = Attendance::with('karyawan')->latest()->paginate(15);
-        
-        return view('attendance.index', compact('attendance_list'));
+        $filterDate = $request->input('filter_date');
+
+        $query = Attendance::with('karyawan');
+
+        if ($filterDate) {
+            $query->whereDate('tanggal', $filterDate);
+        }
+
+        $query->orderBy('tanggal', 'desc')->orderBy('waktu_masuk', 'asc');
+
+        // Pagination hasil filter
+        $attendance_list = $query->paginate(6)->appends($request->query());
+
+        // Hitung total berdasarkan status (mengikuti filter)
+        $total_hadir = $query->clone()->where('status_absensi', 'hadir')->count();
+        $total_izin = $query->clone()->where('status_absensi', 'izin')->count();
+        $total_sakit = $query->clone()->where('status_absensi', 'sakit')->count();
+        $total_alpha = $query->clone()->where('status_absensi', 'alpha')->count();
+
+        return view('attendance.index', compact(
+            'attendance_list',
+            'total_hadir',
+            'total_izin',
+            'total_sakit',
+            'total_alpha'
+        ));
     }
 
     public function create()

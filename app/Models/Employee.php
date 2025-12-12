@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\Department;
 use App\Models\Position;
 use App\Models\Attendance;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Employee extends Model
 {
@@ -27,6 +28,11 @@ class Employee extends Model
 
     public function position() {
         return $this->belongsTo(Position::class, 'position_id');
+    }
+
+    public function documents()
+    {
+        return $this->hasMany(EmployeeDocument::class);
     }
 }
 
